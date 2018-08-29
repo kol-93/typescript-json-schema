@@ -891,7 +891,7 @@ export class JsonSchemaGenerator {
 
         // Create the actual definition only if is an inline definition, or
         // if it will be a $ref and it is not yet created
-        if (!asRef || !this.reffedDefinitions[fullTypeName]) {
+        if (!asRef || (!this.userSymbols[fullTypeName] && !this.reffedDefinitions[fullTypeName])) {
             if (asRef) { // must be here to prevent recursivity problems
                 let reffedDefinition: Definition;
                 if (asTypeAliasRef && reffedType!.getFlags() & (ts.TypeFlags.IndexedAccess | ts.TypeFlags.Index | ts.TypeFlags.Intersection) && symbol) {

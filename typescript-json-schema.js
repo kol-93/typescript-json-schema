@@ -706,7 +706,7 @@ var JsonSchemaGenerator = (function () {
             this.parseCommentsIntoDefinition(prop, returnedDefinition, otherAnnotations);
         }
         this.parseCommentsIntoDefinition(symbol, definition, otherAnnotations);
-        if (!asRef || !this.reffedDefinitions[fullTypeName]) {
+        if (!asRef || (!this.userSymbols[fullTypeName] && !this.reffedDefinitions[fullTypeName])) {
             if (asRef) {
                 var reffedDefinition = void 0;
                 if (asTypeAliasRef && reffedType.getFlags() & (ts.TypeFlags.IndexedAccess | ts.TypeFlags.Index | ts.TypeFlags.Intersection) && symbol) {

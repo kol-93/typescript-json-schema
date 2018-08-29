@@ -749,10 +749,10 @@ var JsonSchemaGenerator = (function () {
                     }
                 }
                 else if (isRawType) {
+                    this.getDefinitionForRootType(typ, reffedType, definition);
                     if (pairedSymbol) {
                         this.parseCommentsIntoDefinition(pairedSymbol, definition, {});
                     }
-                    this.getDefinitionForRootType(typ, reffedType, definition);
                 }
                 else if (node && (node.kind === ts.SyntaxKind.EnumDeclaration || node.kind === ts.SyntaxKind.EnumMember)) {
                     this.getEnumDefinition(typ, definition);

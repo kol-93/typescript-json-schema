@@ -932,10 +932,10 @@ export class JsonSchemaGenerator {
                         this.getIntersectionDefinition(typ as ts.IntersectionType, definition);
                     }
                 } else if (isRawType) {
+                    this.getDefinitionForRootType(typ, reffedType!, definition);
                     if (pairedSymbol) {
                         this.parseCommentsIntoDefinition(pairedSymbol, definition, {});
                     }
-                    this.getDefinitionForRootType(typ, reffedType!, definition);
                 } else if (node && (node.kind === ts.SyntaxKind.EnumDeclaration || node.kind === ts.SyntaxKind.EnumMember)) {
                     this.getEnumDefinition(typ, definition);
                 } else if (symbol && symbol.flags & ts.SymbolFlags.TypeLiteral && symbol.members!.size === 0 && !(node && (node.kind === ts.SyntaxKind.MappedType))) {
